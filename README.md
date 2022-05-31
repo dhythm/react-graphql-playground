@@ -21,3 +21,14 @@ npx eslint --init
 
 npm install --save-dev husky lint-staged concurrently
 ```
+
+## Install GraphQL
+
+```sh
+npm install @apollo/client graphql
+
+npm install --save-dev ts-node ts-node-dev
+npm install apollo-server-express apollo-server-core express graphql
+
+npm install fastify mercurius
+```
