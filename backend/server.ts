@@ -1,38 +1,14 @@
 import { ApolloServerPluginDrainHttpServer } from "apollo-server-core";
-import { ApolloServer, gql } from "apollo-server-express";
+import { ApolloServer } from "apollo-server-express";
+import cors from "cors";
 import express from "express";
 import http from "http";
-
-const typeDefs = gql`
-  type Book {
-    title: String
-    author: String
-  }
-
-  type Query {
-    books: [Book!]!
-  }
-`;
-
-const books = [
-  {
-    title: "The Awakening",
-    author: "Kate Chopin",
-  },
-  {
-    title: "City of Glass",
-    author: "Paul Auster",
-  },
-];
-
-const resolvers = {
-  Query: {
-    books: () => books,
-  },
-};
+import { resolvers } from "./resolvers";
+import { schema } from "./schema";
 
 const startApolloServer = async (typeDefs, resolvers) => {
   const app = express();
+  app.use(cors({ origin: ["http://localhost:9000"] }));
 
   const httpServer = http.createServer(app);
 
@@ -52,4 +28,4 @@ const startApolloServer = async (typeDefs, resolvers) => {
   );
 };
 
-startApolloServer(typeDefs, resolvers);
+startApolloServer(schema, resolvers);

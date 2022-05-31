@@ -32,3 +32,16 @@ npm install apollo-server-express apollo-server-core express graphql
 
 npm install fastify mercurius
 ```
+
+```sh
+curl --request POST \
+  --header 'content-type: application/json' \
+  --url http://localhost:4000/graphql \
+  --data '{"query":"query getBooks { getBooks { title author { name } } }"}'
+```
+
+```sh
+npm install @graphql-codegen/cli
+npx graphql-codegen init
+npm run generate-gql-types
+```
