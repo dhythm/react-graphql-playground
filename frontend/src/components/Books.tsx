@@ -1,6 +1,6 @@
 import { gql, useQuery } from "@apollo/client";
 import { FC } from "react";
-import { Book, Query } from "../graphql";
+import { Query } from "../generated/graphql";
 
 const GetBooks = gql`
   query getBooks {
@@ -18,11 +18,12 @@ export const Books: FC = () => {
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
+  if (!data?.getBooks) return null;
 
-  return data.getBooks.map(({ title, author: { name } }) => (
-    <div key={title}>
+  return data.getBooks.map((item) => (
+    <div key={item?.title}>
       <p>
-        {title}: {name}
+        {item?.author?.name}: {item?.title}
       </p>
     </div>
   ));

@@ -6,7 +6,6 @@
   "scripts": {
     "build": "npx webpack --mode development && cp public/* dist/",
     "dev": "npm run build && npx webpack serve --mode development",
-    "server": "ts-node --project tsconfig.backend.json backend/server.ts",
     "tsc": "tsc --noEmit --skipLibCheck",
     "test": "echo \"Error: no test specified\" && exit 1",
     "generate-gql-types": "graphql-codegen --config codegen.yml"
@@ -25,13 +24,7 @@
   "dependencies": {
     "@apollo/client": "^3.6.5",
     "@graphql-codegen/cli": "^2.6.2",
-    "apollo-server-core": "^3.8.1",
-    "apollo-server-express": "^3.8.1",
-    "cors": "^2.8.5",
-    "express": "^4.18.1",
-    "fastify": "^3.29.0",
     "graphql": "^16.5.0",
-    "mercurius": "^9.6.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-router-dom": "^6.3.0"
